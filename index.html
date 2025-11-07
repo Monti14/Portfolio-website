@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohit Satyanarayan | AI & Automation Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --gray: #666;
+            --light-gray: #e5e7eb;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        .name {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--gray);
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: var(--card-bg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .contact-item:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 48px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 2px;
+        }
+
+        /* Professional Summary */
+        .summary-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent), var(--accent-light));
+        }
+
+        .experience-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 24px rgba(99,102,241,0.15);
+        }
+
+        .experience-header {
+            margin-bottom: 16px;
+        }
+
+        .company-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .role-duration {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .role {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .duration {
+            font-size: 0.9rem;
+            color: var(--gray);
+            background: var(--light-gray);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .experience-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .experience-list li {
+            padding-left: 24px;
+            margin-bottom: 12px;
+            position: relative;
+            color: var(--gray);
+        }
+
+        .experience-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(99,102,241,0.15);
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .skill-category p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Projects */
+        .project-card {
+            background: var(--card-bg);
+            padding: 28px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-light);
+            box-shadow: 0 8px 24px rgba(99,102,241,0.15);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .project-description {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Education */
+        .education-item {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .degree {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .institution {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .graduation {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Certifications */
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-item {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--accent);
+        }
+
+        .cert-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            color: var(--gray);
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .cta {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            padding: 48px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 80px 0 40px;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--accent);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .role-duration {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="name">Mohit Satyanarayan</h1>
+                <p class="tagline">AI & Automation Engineer | Python Developer | AWS Enthusiast</p>
+                
+                <div class="contact-info">
+                    <a href="mailto:mohitsatyanarayan1409@gmail.com" class="contact-item">
+                        <span>📧</span>
+                        <span>mohitsatyanarayan1409@gmail.com</span>
+                    </a>
+                    <a href="tel:7013056935" class="contact-item">
+                        <span>📱</span>
+                        <span>+91 7013056935</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Professional Summary -->
+    <section id="summary">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="summary-text">
+                Highly motivated and adaptable professional with hands-on experience in Python, AWS, workflow automation (n8n), prompt engineering, and AI tool integration. Skilled at leveraging cursor-based development, data science practices, and automation frameworks to deliver impactful solutions. Proven ability to lead product pitches, conduct live training sessions, debug complex systems, and collaborate with clients on innovative projects.
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-card">
+                <div class="experience-header">
+                    <h3 class="company-name">Varkasa Solutions Pvt. Ltd.</h3>
+                    <div class="role-duration">
+                        <span class="role">Full-Time Employee</span>
+                        <span class="duration">Sep 2025 - Present</span>
+                    </div>
+                </div>
+                <ul class="experience-list">
+                    <li>Added new capabilities to the FoXYiZ Framework, including Email Automation, CRUD Operations, and ongoing work on Cloud Automation Modules</li>
+                    <li>Worked directly with backend codebases to enhance efficiency and stability</li>
+                    <li>Conducted a live training session on FoXYiZ for students, explaining its functionality, internal architecture, and backend workflow in an engaging, hands-on format</li>
+                    <li>Interviewed and assessed three candidates for the team, demonstrating leadership, multitasking ability, and adaptability across varied responsibilities</li>
+                    <li>Successfully pitched product concepts to clients, demonstrating strong communication and leadership skills</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <h3 class="company-name">Varkasa Solutions Pvt. Ltd.</h3>
+                    <div class="role-duration">
+                        <span class="role">Intern (Unpaid)</span>
+                        <span class="duration">Aug 2025 - Sep 2025</span>
+                    </div>
+                </div>
+                <ul class="experience-list">
+                    <li>Contributed to the EMS Project by creating test websites using Base44</li>
+                    <li>Supported AI-driven workflows with n8n and NotebookLM</li>
+                    <li>Assisted with dashboard integration (FoXYiZ) using cursor and base44</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming & Development</h3>
+                    <p>Python, Cursor, Prompt Engineering, Data Science</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Automation & AI Tools</h3>
+                    <p>n8n, NotebookLM, Base44, FoXYiZ Framework</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & Infrastructure</h3>
+                    <p>AWS (EC2, S3, IAM), Cloud Automation, EMS Project Implementation</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Project Experience</h3>
+                    <p>Backend Development, Debugging, UI Frameworks, Test Website Development, IoT & SCADA Research</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p>English, Hindi, Telugu, Tamil (Fluent) | Japanese (N4 - Intermediate)</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <p>Leadership, Team Collaboration, Client Communication, Problem-Solving</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="project-card">
+                <h3 class="project-title">FoXYiZ Framework Enhancements</h3>
+                <p class="project-description">Improved backend logic, added automation capabilities (Email, CRUD, Cloud), and optimized framework for extensibility.</p>
+            </div>
+
+            <div class="project-card">
+                <h3 class="project-title">FoXYiZ Live Training Session</h3>
+                <p class="project-description">Led a virtual workshop explaining FoXYiZ's architecture and practical implementation.</p>
+            </div>
+
+            <div class="project-card">
+                <h3 class="project-title">AI & Automation Tools Integration</h3>
+                <p class="project-description">Used NotebookLM, n8n, and other AI tools to automate workflows and enhance client solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <h3 class="degree">Bachelor of Computer Applications (BCA)</h3>
+                <p class="institution">Manipal University Jaipur</p>
+                <p class="graduation">Expected Graduation: Sept 2026 (Currently in 5th Semester)</p>
+            </div>
+
+            <div class="education-item">
+                <h3 class="degree">Intermediate (11+12)</h3>
+                <p class="institution">Secunderabad Public School</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <ul class="cert-list">
+                <li class="cert-item">
+                    <strong>IBM Professional Certificate in Data Science</strong><br>
+                    Coursera (Expected completion: March 2025)
+                </li>
+                <li class="cert-item">
+                    <strong>Japanese Language Proficiency Test (JLPT N4)</strong><br>
+                    Expected: Dec 7, 2025
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="container">
+        <div class="cta">
+            <h2>Let's Build Something Amazing</h2>
+            <p>Open to exciting opportunities in AI, automation, and backend development</p>
+            <a href="mailto:mohitsatyanarayan1409@gmail.com" class="cta-button">Get In Touch</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Mohit Satyanarayan. Crafted with passion and code.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animation for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
